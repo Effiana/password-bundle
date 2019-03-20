@@ -1,0 +1,21 @@
+{
+  "name": "effiana/password-bundle",
+  "type": "symfony-bundle",
+  "description": "Effiana Password Bundle",
+  "license": "MIT",
+  "require": {
+    "php": "^7.2",
+    "symfony/framework-bundle": "^4.2",
+    "symfony/security": "^4.2",
+    "monolog/monolog": "^1.24",
+    "paragonie/sodium_compat": "^1.9"
+  },
+  "autoload": {
+    "psr-0": { "Effiana\\PasswordBundle": "src/" }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
