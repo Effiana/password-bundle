@@ -1,0 +1,5 @@
+services:
+  effiana_password_encoder:
+    public: true
+    class: Effiana\PasswordBundle\Security\PasswordEncoder
+    arguments: ["%env(string:APP_SECRET)%"]

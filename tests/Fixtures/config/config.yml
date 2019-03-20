@@ -1,0 +1,11 @@
+framework:
+  session: ~
+  secret: '%env(APP_SECRET)%'
+  csrf_protection: { enabled: true }
+  http_method_override: true
+  trusted_hosts: ~
+  esi: { enabled: true }
+  fragments: { enabled: true }
+  php_errors:
+    log: false
+  ide: ~

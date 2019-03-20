@@ -8,14 +8,26 @@
     "symfony/framework-bundle": "^4.2",
     "symfony/security": "^4.2",
     "monolog/monolog": "^1.24",
-    "paragonie/sodium_compat": "^1.9"
+    "paragonie/sodium_compat": "^1.9",
+    "symfony/monolog-bundle": "^3.3",
+    "symfony/security-bundle": "^4.2",
+    "symfony/yaml": "^4.2",
+    "symfony/form": "^4.2"
   },
   "autoload": {
-    "psr-0": { "Effiana\\PasswordBundle": "src/" }
+    "psr-4": { "Effiana\\PasswordBundle\\": "src/" }
+  },
+  "autoload-dev": {
+    "psr-4": { "Tests\\Fixtures\\": "tests/Fixtures/" }
   },
   "extra": {
     "branch-alias": {
       "dev-master": "1.0-dev"
     }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.0",
+    "symfony/phpunit-bridge": "^4.2",
+    "symfony/test-pack": "^1.0"
   }
 }

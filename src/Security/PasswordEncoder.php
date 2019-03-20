@@ -11,7 +11,7 @@
  */
 declare(strict_types=1);
 
-namespace Effiana\PasswordBundle;
+namespace Effiana\PasswordBundle\Security;
 
 use Monolog\Handler\MissingExtensionException;
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
@@ -73,6 +73,7 @@ class PasswordEncoder implements PasswordEncoderInterface
      */
     public function encodePassword($raw, $salt): string
     {
+        $salt = hash(self::HASH_ALGORITHM, $salt);
         $hash = hash(self::HASH_ALGORITHM, $raw);
         $hash = sprintf('pass_%s_%s', $hash, $salt);
         $hash = password_hash($hash, PASSWORD_ARGON2I, $this->options);
@@ -117,6 +118,7 @@ class PasswordEncoder implements PasswordEncoderInterface
      */
     public function isPasswordValid($encrypted, $raw, $salt): bool
     {
+        $salt = hash(self::HASH_ALGORITHM, $salt);
         $hash = hash(self::HASH_ALGORITHM, $raw);
         $hash = sprintf('pass_%s_%s', $hash, $salt);
 
@@ -152,7 +154,7 @@ class PasswordEncoder implements PasswordEncoderInterface
             \ParagonIE_Sodium_Compat::memzero($raw);
             throw new BadCredentialsException('Sodium: Bad ciphertext');
         }
-        if (false === password_verify($hash, $encrypted)) {
+        if (false === password_verify($hash, $decrypted)) {
             /*
              * Clear memory for variables
              */
